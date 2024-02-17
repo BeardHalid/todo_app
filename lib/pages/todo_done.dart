@@ -11,6 +11,7 @@ class TodoDone extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tamamlananlar"),
+        centerTitle: true,
       ),
       body: todoNotifierPrv.when(
         data: (data) {
