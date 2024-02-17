@@ -9,12 +9,7 @@ abstract class TodoCheckBase with Store{
   bool checked = false;
 
   @action
-  void setTrue(){
-    checked = true;
-  }
-
-  @action
-  void setFalse(){
-    checked = false;
+  void setValue(bool value){
+    checked = value;
   }
 }

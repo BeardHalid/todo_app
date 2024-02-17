@@ -29,22 +29,11 @@ mixin _$TodoCheck on TodoCheckBase, Store {
       ActionController(name: 'TodoCheckBase', context: context);
 
   @override
-  void setTrue() {
+  void setValue(bool value) {
     final _$actionInfo = _$TodoCheckBaseActionController.startAction(
-        name: 'TodoCheckBase.setTrue');
+        name: 'TodoCheckBase.setValue');
     try {
-      return super.setTrue();
-    } finally {
-      _$TodoCheckBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setFalse() {
-    final _$actionInfo = _$TodoCheckBaseActionController.startAction(
-        name: 'TodoCheckBase.setFalse');
-    try {
-      return super.setFalse();
+      return super.setValue(value);
     } finally {
       _$TodoCheckBaseActionController.endAction(_$actionInfo);
     }
