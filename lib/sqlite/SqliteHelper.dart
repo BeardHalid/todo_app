@@ -22,9 +22,12 @@ class SqliteHelper{
     const String db = "todo.db";
     final String dbPath = await getDatabasesPath();
     final String path = join(dbPath, db);
-    final openDb = await openDatabase(path, onCreate: (db, version) {
-      db.execute("CREATE TABLE Todo (id	INTEGER NOT NULL, text TEXT, checked TEXT, PRIMARY KEY(id AUTOINCREMENT)");
-    },);
-    return openDb;
+    if(await databaseExists(path)){
+      return await openDatabase(path);
+    }else{
+      return await openDatabase(path, onCreate: (db, version) {
+        db.execute("CREATE TABLE Todo (id	INTEGER NOT NULL, text TEXT, checked TEXT, PRIMARY KEY(id AUTOINCREMENT)");
+      },);
+    }
   }
 }
