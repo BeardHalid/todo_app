@@ -10,31 +10,6 @@ class DoneTodoProvider extends AsyncNotifier<List<Todo>> {
   FutureOr<List<Todo>> build() async {
     return b.getTodos("true");
   }
-
-/*Future<void> addTodo(String text) async{
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async{
-      await b.setTodo(text);
-      return b.getTodos("true");
-    },);
-  }
-
-  Future<void> updateTodo(String id, String checked) async{
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async{
-      await b.updateTodo(id, checked);
-      return b.getTodos("true");
-    },);
-  }
-
-  Future<void> deleteTodo(String id) async{
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async{
-      await b.deleteTodo(id);
-      return b.getTodos("true");
-    },);
-  }
-}*/
 }
 
 final doneTodoNotifierProvider =
