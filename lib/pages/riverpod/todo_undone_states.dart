@@ -22,7 +22,7 @@ class UndoneTodoProvider extends AsyncNotifier<List<Todo>> {
     );
   }
 
-  Future<void> updateTodo(String id, String checked) async {
+  Future<void> updateTodo(int id, String checked) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(
       () async {
@@ -32,7 +32,7 @@ class UndoneTodoProvider extends AsyncNotifier<List<Todo>> {
     );
   }
 
-  Future<void> deleteTodo(String id) async {
+  Future<void> deleteTodo(int id) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(
       () async {
