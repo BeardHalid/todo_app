@@ -7,7 +7,7 @@ class Base implements IBase{
   @override
   Future<List<Todo>> getTodos(String checked) async{
     final db = await helper.openDb();
-    final todoList = await db.rawQuery("Select * from Todo where checked =? '$checked'");
+    final todoList = await db.rawQuery("Select * from Todo where checked = '$checked'");
     return List.generate(todoList.length, (index){
       final todo = Todo.fromJson(todoList[index]);
       return todo;
