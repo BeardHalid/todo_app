@@ -25,8 +25,8 @@ class SqliteHelper{
     if(await databaseExists(path)){
       return await openDatabase(path);
     }else{
-      return await openDatabase(path, onCreate: (db, version) {
-        db.execute("CREATE TABLE Todo (id	INTEGER NOT NULL, text TEXT, checked TEXT, PRIMARY KEY(id AUTOINCREMENT)");
+      return await openDatabase(path, version: 1 ,onCreate: (db, version) async {
+         await db.execute("CREATE TABLE Todo (id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT, checked TEXT)");
       },);
     }
   }
