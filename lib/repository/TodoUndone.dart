@@ -3,7 +3,7 @@ import 'package:todo_app/repository/ITodoUndone.dart';
 
 class TodoUndone extends Base implements ITodoUndone {
   @override
-  Future<void> deleteTodo(String id) async {
+  Future<void> deleteTodo(int id) async {
     final db = await helper.openDb();
     await db.delete("Todo", where: "id=?", whereArgs: [id]);
   }
@@ -15,7 +15,7 @@ class TodoUndone extends Base implements ITodoUndone {
   }
 
   @override
-  Future<void> updateTodo(String id, String checked) async {
+  Future<void> updateTodo(int id, String checked) async {
     final db = await helper.openDb();
     db.update("Todo", {"checked": checked}, where: "id=?", whereArgs: [id]);
   }
