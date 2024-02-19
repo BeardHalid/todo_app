@@ -28,57 +28,62 @@ class TodoUndone extends ConsumerWidget {
               itemBuilder: (context, index) {
                 final todo = data[index];
                 return Card(
-                  child: Row(
-                    children: [
-                      Text(todo.text),
-                      Observer(
-                        builder: (context) {
-                          return Checkbox(
-                            value: cb.checked,
-                            onChanged: (value) {
-                              cb.setValue(value!);
-                              showModalBottomSheet(
-                                context: context,
-                                isDismissible: false,
-                                builder: (context) {
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      const Text(
-                                          "Değişiklik yapmak istediğinizden emin misiniz?"),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          ElevatedButton(
-                                              onPressed: () {
-                                                ref
-                                                    .read(
-                                                        undoneTodoNotifierProvider
-                                                            .notifier)
-                                                    .updateTodo(
-                                                        todo.id, "true");
-                                                ref.invalidate(doneTodoNotifierProvider);
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text("Evet")),
-                                          ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                cb.setValue(false);
-                                              },
-                                              child: const Text("Hayır")),
-                                        ],
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                          );
-                        },
-                      )
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        Text(todo.text),
+                        Observer(
+                          builder: (context) {
+                            return Checkbox(
+                              value: cb.checked,
+                              onChanged: (value) {
+                                cb.setValue(value!);
+                                showModalBottomSheet(
+                                  context: context,
+                                  isDismissible: false,
+                                  builder: (context) {
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        const Text(
+                                            "Değişiklik yapmak istediğinizden emin misiniz?"),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  ref
+                                                      .read(
+                                                          undoneTodoNotifierProvider
+                                                              .notifier)
+                                                      .updateTodo(
+                                                          todo.id, "true");
+                                                  ref.invalidate(
+                                                      doneTodoNotifierProvider);
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text("Evet")),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  cb.setValue(false);
+                                                },
+                                                child: const Text("Hayır")),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                            );
+                          },
+                        )
+                      ],
+                    ),
                   ),
                 );
               },
@@ -102,7 +107,6 @@ class TodoUndone extends ConsumerWidget {
               context: context,
               builder: (context) {
                 return Column(
-
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const Text("Görev Ekle"),

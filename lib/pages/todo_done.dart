@@ -21,10 +21,13 @@ class TodoDone extends ConsumerWidget {
               itemBuilder: (context, index) {
                 final todo = data[index];
                 return Card(
-                  child: Row(
-                    children: [
-                      Text(todo.text),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        Text(todo.text),
+                      ],
+                    ),
                   ),
                 );
               },
